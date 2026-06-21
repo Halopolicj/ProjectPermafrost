@@ -1,0 +1,85 @@
+this file is in case i add someone to work with me on this mod (looking at you computerman)
+i cant be bothered to explain everything in my code or mindustry code, youll figure it out
+
+the mindustry wiki is good at finding the important stuff with description of them https://mindustrygame.github.io/wiki/
+!! that wiki modding stuff has stuff for hjson mods, but it still has useful information
+
+also u can check the code from the github https://github.com/anuken/mindustry, also repos with the tag "mindustry-mod"
+the mod broswer automatically adds & updates all the mods with that tag to it every 2 hours
+
+the rest of this file is probably going to be the stuff i aim to add in the mod
+
+first of, the mod takes place on a new planet, currently named Gleo but i might change it, everything is not confirmed fuck you
+the plenet is always facing the sun the same way so it has 3 areas: (which probably isnt how it works irl but i dont care)
+
+    cold area is away from the sun,
+        low amount of heating and power
+        expensive but strong units
+
+    hot area
+        abundance of power and heat
+        more centered on liquid production and flying units.
+        requires the buildings to be cooled rather than heated.
+
+    neutral area in between.
+            this area is most similar to normal gameplay on serpulo (purple planet)
+            everything is balanced, kinda, not as in how good stuff is, it just means everything is mediocre
+            mostly ocean with some islands
+
+https://docs.google.com/spreadsheets/d/1TuLMvi6DSPTYfWjnsxkD1Tz2AsLHdsSdQHTxmB0rBH4/edit?gid=0#gid=0
+spreadsheet with important stuff
+
+campaign progression
+
+    each part is kinda its own mini campaign
+    1st part (middle area):
+        player starts in the middle part, this progresses until around tier 3 units,
+        after conquering the final enemy base the player unlocks cold & hot maps
+
+    part 2a (cold area):
+        player starts with a new tech tree
+        this side has low power & stuff needs heating (basically erekir, orange planet)
+        shit is expensive
+    progresses until tier 4 or 5 units
+
+    part 2b (hot area):
+        player starts with a new tech tree
+        this side has a lot of power but needs a lot of cooling instead
+        shit is cheap but also very weak, meaning u have to go for numbers
+        progresses until tier 4 or 5 units
+
+    part 3 (back to the middle area):
+        requires player to beat both part 2a & 2b
+        player continues with tech from part 1, and gains new tech research based on part 2a & 2b
+        later on player gets acces to nanobots, which can be used to build self healing structures units
+
+        tier 4 & 5 units can be either normal, or specialized
+        nanobot units by default are weak af and not worth it, but they can be upgraded into specialized units
+
+        specialized units are based on part on all areas,
+            cold specialized units are very expensive, but very strong with a low unit cap, specialized in ground units
+            takes a good amount of time to make them
+
+            hot specialized units are cheaper and more specialized in flying
+            fast to produce, glass cannons
+
+            neutral specialized units are not that cheap but also not expensive, specialized in water units
+            mid time to produce
+
+        extras:
+            1 map for both part 2a & 2b, unlocked after beating part 3
+            both maps are meand to be as a final challange for their respective planet side
+
+        splitting campaigns
+        mini campaign inside a mini campaign, has their own tech tree but can also use their parent campaigns tech tree
+            2as (ass)
+                idk
+
+            2bs (bullshit)
+                rock shit
+                cliffs
+                underground & caves
+                (minecraft caves & cliffs?)
+
+            3s (shit)
+                underwater
