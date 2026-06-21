@@ -111,6 +111,7 @@ public class PermaBlocks {
         nickelWall = new Wall("nickel-wall") {{
             health = 200;
             requirements(Category.defense, with(PermaItems.nickel, 6));
+            researchRequirements(coreStasis);
         }};
         nickelWallBig = new Wall("nickel-wall-big") {{
             health = 1000;

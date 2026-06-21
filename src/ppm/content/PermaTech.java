@@ -21,69 +21,8 @@ public class PermaTech {
             context().researchCostMultipliers = costs;
             //distribution
             node(nickelConveyor, () -> {
-                node(nickelJunction, () -> {
-                    node(nickelRouter, () ->{
-                        node(nickelBridge, () ->{
-                        });
-                        node(nickelSorter, () -> {
-                            node(nickelSorterInv, () -> {
-                            }) ;
-                            node(nickelOverflow, () -> {
-                                node(nickelUnderflow, () -> {
-                                });
-                            });
-                        });
-                    });
-                });
-            });
-            //walls
-            node(nickelWall, () ->{
-                node(nickelWallBig, () -> {
-                    node(zircWall, () -> {
-                        node(zircWallBig, () -> {
-                        });
-                    });
-                });
-                //Turrets
-                node(Hedgehog, () ->{
-                    node(aaTurret, () -> {
-                    });
-                });
-                //TODO add more walls & make nano walls branch off of the strongest normal wall
-            });
-            //drills
-            node(basicDrill, () -> {
-                //TODO add pre gallium wall drill & better drills, possibly post gallium
-            });
-            //Crafting
-            node(bismuthCristilizer, () -> {
-            });
-            //storage
-            node(coreFairness, () -> {
-                node(coreParity, () -> {
-                    node(coreJustice, () -> {
-                    });
-                });
-            });
-            //items
-            nodeProduce(nickel, () -> {
-                nodeProduce(Items.lead, () -> {
-                    nodeProduce(bismuth, () -> {
-                        nodeProduce(gallium, () -> {
-                            nodeProduce(zirconium, () -> {
-                            });
-                        });
-                    });
-                    //TODO add something between lead and bismuth
-                });
-                //Liquids
-                nodeProduce(Liquids.water, () -> {
-                    nodeProduce(Liquids.gallium, () -> {
-                    });
-                    nodeProduce(PermaLiquids.moltenBismuth, () -> {
-                    });
-                });
+
             });
         });
-    }
+    };
 }
