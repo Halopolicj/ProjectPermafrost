@@ -1,6 +1,7 @@
 package ppm.content;
 
 
+import mindustry.type.Planet;
 import mindustry.type.SectorPreset;
 
 import static ppm.content.PermaPlanets.Gleo;
