@@ -35,7 +35,7 @@ public class PermaPlanets {
                 landCloudColor = Color.valueOf("3587F2");
                 atmosphereColor = Color.valueOf("00FF9F");
                 alwaysUnlocked = true;
-                //startSector = 23;
+                tidalLock = true;
                 atmosphereRadIn = 0.02f;
                 atmosphereRadOut = 0.3f;
                 accessible = true;
@@ -51,13 +51,14 @@ public class PermaPlanets {
 
 
                 ruleSetter = r -> {
-                    r.waveTeam = Team.blue;
+                    r.waveTeam = PermaTeams.Glarstes;
                     r.placeRangeCheck = false;
                     r.showSpawns = true;
                     r.waveSpacing = 80 * Time.toSeconds;
                     r.initialWaveSpacing = 8f * Time.toMinutes;
                     r.coreDestroyClear = true;
                     r.dropZoneRadius = 64;
+
 
                     r.waves = true;
                     r.onlyDepositCore = true;

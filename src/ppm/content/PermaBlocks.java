@@ -4,29 +4,17 @@
 package ppm.content;
 
 //holy fuck why do i need all of this
-import arc.Core;
 import arc.graphics.Color;
-import arc.graphics.g2d.TextureRegion;
-import arc.scene.ui.Image;
-import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
-import mindustry.ctype.Content;
-import mindustry.entities.bullet.*;
-import mindustry.entities.part.RegionPart;
-import mindustry.entities.pattern.ShootAlternate;
 import mindustry.type.Category;
 
-import mindustry.graphics.*;
-import mindustry.type.Liquid;
 import mindustry.type.LiquidStack;
 import mindustry.world.Block;
 import mindustry.world.blocks.defense.Wall;
-import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.environment.Floor;
 import mindustry.world.blocks.environment.OreBlock;
-import mindustry.world.blocks.liquid.LiquidBlock;
 import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.draw.*;
@@ -37,19 +25,14 @@ import ppm.expand.blocks.defense.RegenWall;
 //TODO add back in regen wall type
 //import ppm.expand.blocks.defense.RegenWall;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-
 import static mindustry.type.ItemStack.with;
-import static mindustry.world.meta.Stat.buildTime;
-import static mindustry.world.meta.Stat.input;
 
 
 public class PermaBlocks {
     public static Block
 
     // floor ores
-    floorNickel,
+    floorCadmium,
 
     // walls ores
     wallGallium,
@@ -58,7 +41,7 @@ public class PermaBlocks {
     liquidBismuth,
 
     // def walls
-    nickelWall, nickelWallBig, zircWall, zircWallBig,
+    cadmiumWall, cadmiumWallBig, zircWall, zircWallBig,
 
     //TODO move turrets to their own file or else this file will be very fucking long
     //Turrets
@@ -70,8 +53,8 @@ public class PermaBlocks {
 
 
     //distribution
-    nickelConveyor, nickelRouter, nickelJunction, nickelBridge, nickelSorter, nickelSorterInv,
-            nickelOverflow, nickelUnderflow,
+    cadmiumConveyor, cadmiumRouter, cadmiumJunction, cadmiumBridge, cadmiumSorter, cadmiumSorterInv,
+            cadmiumOverflow, cadmiumUnderflow,
 
     // production
     greenfactory/*why are you green*/, bismuthCristilizer,
@@ -79,21 +62,18 @@ public class PermaBlocks {
     // drills
     basicDrill,
     //storage
-    coreStasis, coreParity, coreFairness, coreJustice,
-
-
-    greem;
+    coreStasis, coreParity, coreFairness, coreJustice;
 
 
 
     public static void load() {
         //floor ores
-        floorNickel = new OreBlock("floor-nickel-ore") {{
-            itemDrop = PermaItems.nickel;
+        floorCadmium = new OreBlock("floor-cadmium-ore") {{
+            itemDrop = PermaItems.cadmium;
             variants = 3;
             oreScale = 2f;
             oreThreshold = 0.5f;
-            attributes.set(Attribute.get("Nickel"), .075f);
+            attributes.set(Attribute.get("Cadmium"), .075f);
         }};
         //wall ores
         wallGallium = new OreBlock("wall-gallium-ore") {{
@@ -119,14 +99,14 @@ public class PermaBlocks {
 
 
         //Defense
-        nickelWall = new Wall("nickel-wall") {{
+        cadmiumWall = new Wall("cadmium-wall") {{
             health = 200;
-            requirements(Category.defense, with(PermaItems.nickel, 6));
+            requirements(Category.defense, with(PermaItems.cadmium, 6));
         }};
-        nickelWallBig = new Wall("nickel-wall-big") {{
+        cadmiumWallBig = new Wall("cadmium-wall-big") {{
             health = 1000;
             size = 2;
-            requirements(Category.defense, with(PermaItems.nickel, 24));
+            requirements(Category.defense, with(PermaItems.cadmium, 24));
         }};
 
         zircWall = new Wall("zirc-wall") {{
@@ -141,7 +121,7 @@ public class PermaBlocks {
         //Regen walls
         //TODO add this shit back
         nanoWall = new RegenWall("nano-wall") {{
-            requirements(Category.defense, with(PermaItems.nickel, 100, PermaItems.gallium, 10));
+            requirements(Category.defense, with(PermaItems.cadmium, 100, PermaItems.gallium, 10));
             health = 1000;
             hasItems = false;
             healPercent = 12f;
@@ -153,7 +133,7 @@ public class PermaBlocks {
         }};
 
         nanoWallBig = new RegenWall("nano-wall-big") {{
-            requirements(Category.defense, with(PermaItems.nickel, 100, PermaItems.gallium, 10));
+            requirements(Category.defense, with(PermaItems.cadmium, 100, PermaItems.gallium, 10));
             health = 4000;
             hasItems = false;
             healPercent = 12f;
@@ -165,66 +145,61 @@ public class PermaBlocks {
         }};
 
         //Distribution
-        nickelConveyor = new Conveyor("nickel-conveyor") {{
+        cadmiumConveyor = new Conveyor("cadmium-conveyor") {{
             speed = 4f / 60f;
             health = 50;
             itemCapacity = 2;
             buildCostMultiplier = 2f;
-            requirements(Category.distribution, with(PermaItems.nickel, 1));
-            junctionReplacement = nickelJunction;
-            bridgeReplacement = nickelBridge;
+            requirements(Category.distribution, with(PermaItems.cadmium, 1));
+            junctionReplacement = cadmiumJunction;
+            bridgeReplacement = cadmiumBridge;
         }};
 
-        nickelRouter = new Router("nickel-router") {{
+        cadmiumRouter = new Router("cadmium-router") {{
             health = 90;
-            requirements(Category.distribution, with(PermaItems.nickel, 5, Items.lead, 3));
+            requirements(Category.distribution, with(PermaItems.cadmium, 5, Items.lead, 3));
         }};
 
-        nickelJunction = new Junction("nickel-junction") {{
-            requirements(Category.distribution, with(PermaItems.nickel, 3));
+        cadmiumJunction = new Junction("cadmium-junction") {{
+            requirements(Category.distribution, with(PermaItems.cadmium, 3));
             health = 90;
             speed = 3;
             capacity = 4;
 
         }};
-        nickelBridge = new DuctBridge("nickel-bridge") {{
-            requirements(Category.distribution, with(PermaItems.nickel, 10, Items.lead, 5));
+        cadmiumBridge = new DuctBridge("cadmium-bridge") {{
+            requirements(Category.distribution, with(PermaItems.cadmium, 10, Items.lead, 5));
             itemCapacity = 5;
             health = 100;
         }};
 
-        nickelSorter = new Sorter("nickel-sorter") {{
-            requirements(Category.distribution, with(PermaItems.nickel, 10, Items.lead, 5));
+        cadmiumSorter = new Sorter("cadmium-sorter") {{
+            requirements(Category.distribution, with(PermaItems.cadmium, 10, Items.lead, 5));
             itemCapacity = 2;
             health = 90;
         }};
 
-        nickelSorterInv = new Sorter("nickel-sorter-inverted") {{
-            requirements(Category.distribution, with(PermaItems.nickel, 10, Items.lead, 5));
+        cadmiumSorterInv = new Sorter("cadmium-sorter-inverted") {{
+            requirements(Category.distribution, with(PermaItems.cadmium, 10, Items.lead, 5));
             itemCapacity = 2;
             health = 90;
             invert = true;
         }};
 
-        nickelOverflow = new OverflowGate("nickel-overflow"){{
-            requirements(Category.distribution, with(PermaItems.nickel, 5, Items.lead, 5));
+        cadmiumOverflow = new OverflowGate("cadmium-overflow"){{
+            requirements(Category.distribution, with(PermaItems.cadmium, 5, Items.lead, 5));
             itemCapacity = 2;
             health = 90;
         }};
 
-        nickelUnderflow = new OverflowGate("nickel-underflow"){{
-            requirements(Category.distribution, with(PermaItems.nickel, 5, Items.lead, 5));
+        cadmiumUnderflow = new OverflowGate("cadmium-underflow"){{
+            requirements(Category.distribution, with(PermaItems.cadmium, 5, Items.lead, 5));
             itemCapacity = 2;
             health = 90;
             invert = true;
         }};
         //Production
 
-        greem = new GenericCrafter("greem")
-        {{
-           hideDatabase = true;
-
-        }};
 
         greenfactory = new GenericCrafter("greenfactory") //geniuenly when the hell did i make this
         {{
@@ -233,11 +208,10 @@ public class PermaBlocks {
             size = 2;
             consumeItem(PermaItems.gallium, 2);
             craftTime = 60f;
-            description = greem.emoji();
         }};
 
         bismuthCristilizer = new GenericCrafter("bismuth-crystalizer") {{
-            requirements(Category.crafting, with(PermaItems.nickel, 50, Items.lead, 35));
+            requirements(Category.crafting, with(PermaItems.cadmium, 50, Items.lead, 35));
             itemCapacity = 10;
             outputItems = with(PermaItems.bismuth, 2);
             consumeItem(Items.lead, 2);
@@ -280,7 +254,7 @@ public class PermaBlocks {
             squareSprite = true;
             drawSpinSprite = true;
             drawMineItem = true;
-            requirements(Category.production, with(PermaItems.nickel, 16));
+            requirements(Category.production, with(PermaItems.cadmium, 16));
         }};
 
         //Storage
@@ -293,7 +267,7 @@ public class PermaBlocks {
             unitCapModifier = 15;
             unitType = UnitTypes.poly;
             drawTeamOverlay = true;
-            requirements(Category.effect, with(PermaItems.nickel, 2000, Items.lead, 2000));
+            requirements(Category.effect, with(PermaItems.cadmium, 2000, Items.lead, 2000));
         }};
 
         coreFairness = new CoreBlock("core-fairness") {{
@@ -303,7 +277,7 @@ public class PermaBlocks {
             unitCapModifier = 20;
             drawTeamOverlay = true;
             unitType = UnitTypes.mega;
-            requirements(Category.effect, with(PermaItems.nickel, 3000, Items.lead, 3000));
+            requirements(Category.effect, with(PermaItems.cadmium, 3000, Items.lead, 3000));
         }};
 
         coreParity = new CoreBlock("core-parity") {{
@@ -313,7 +287,7 @@ public class PermaBlocks {
             unitCapModifier = 25;
             drawTeamOverlay = true;
             unitType = UnitTypes.quad;
-            requirements(Category.effect, with(PermaItems.nickel, 4000, Items.lead, 4000));
+            requirements(Category.effect, with(PermaItems.cadmium, 4000, Items.lead, 4000));
         }};
 
         coreJustice = new CoreBlock("core-justice") {{
@@ -324,7 +298,7 @@ public class PermaBlocks {
             unitCapModifier = 30;
             drawTeamOverlay = true;
             unitType = UnitTypes.oct;
-            requirements(Category.effect, with(PermaItems.nickel, 5000, Items.lead, 5000));
+            requirements(Category.effect, with(PermaItems.cadmium, 5000, Items.lead, 5000));
         }};
 
         //Turrets

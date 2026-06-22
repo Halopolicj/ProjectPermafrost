@@ -8,10 +8,10 @@ public class PermaItems {
     //Load Mod Items
 
     public static Item
-            nickel, gallium, zirconium, bismuth;
+            cadmium, gallium, zirconium, bismuth;
 
     public static void load() {
-        nickel = new Item("nickel") {{
+        cadmium = new Item("cadmium") {{
             cost = 0.4f;
             color = Color.valueOf("cbbd8a");
             hardness=1;
