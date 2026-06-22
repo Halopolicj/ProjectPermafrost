@@ -220,7 +220,7 @@ public class PermaBlocks {
         }};
         //Production
 
-        greem = new Block("greem")
+        greem = new GenericCrafter("greem")
         {{
            hideDatabase = true;
 
