@@ -21,8 +21,36 @@ public class PermaTech {
             context().researchCostMultipliers = costs;
             //distribution
             node(nickelConveyor, () -> {
+                node(nickelRouter, () -> {
+                    node(nickelJunction, () -> {
+                        node(nickelSorter, () -> {
+                            node(nickelSorterInv, ()-> {
 
+                            });
+                        });
+                        node(nickelOverflow, () -> {
+                            node(nickelUnderflow, () -> {
+
+                            });
+                        });
+                    });
+                });
+                node(nickelBridge, () -> {
+
+                });
             });
+            node(nickelWall, () -> {
+               node(nickelWallBig, () -> {
+
+               });
+               node(zircWall, () -> {
+                   node(zircWallBig, () -> {
+
+                   });
+               });
+            });
+
+
         });
     };
 }

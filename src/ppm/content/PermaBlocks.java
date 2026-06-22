@@ -4,10 +4,14 @@
 package ppm.content;
 
 //holy fuck why do i need all of this
+import arc.Core;
 import arc.graphics.Color;
+import arc.graphics.g2d.TextureRegion;
+import arc.scene.ui.Image;
 import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
+import mindustry.ctype.Content;
 import mindustry.entities.bullet.*;
 import mindustry.entities.part.RegionPart;
 import mindustry.entities.pattern.ShootAlternate;
@@ -28,9 +32,13 @@ import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 import mindustry.content.UnitTypes;
+import ppm.expand.blocks.defense.RegenWall;
 
 //TODO add back in regen wall type
 //import ppm.expand.blocks.defense.RegenWall;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
 
 import static mindustry.type.ItemStack.with;
 import static mindustry.world.meta.Stat.buildTime;
@@ -71,7 +79,10 @@ public class PermaBlocks {
     // drills
     basicDrill,
     //storage
-    coreStasis, coreParity, coreFairness, coreJustice;
+    coreStasis, coreParity, coreFairness, coreJustice,
+
+
+    greem;
 
 
 
@@ -129,7 +140,7 @@ public class PermaBlocks {
         }};
         //Regen walls
         //TODO add this shit back
-        /*nanoWall = new RegenWall("nano-wall") {{
+        nanoWall = new RegenWall("nano-wall") {{
             requirements(Category.defense, with(PermaItems.nickel, 100, PermaItems.gallium, 10));
             health = 1000;
             hasItems = false;
@@ -151,7 +162,7 @@ public class PermaBlocks {
             consumesPower = true;
             size = 2;
             consumePower(1200f);
-        }};*/
+        }};
 
         //Distribution
         nickelConveyor = new Conveyor("nickel-conveyor") {{
@@ -208,6 +219,13 @@ public class PermaBlocks {
             invert = true;
         }};
         //Production
+
+        greem = new Block("greem")
+        {{
+           hideDatabase = true;
+
+        }};
+
         greenfactory = new GenericCrafter("greenfactory") //geniuenly when the hell did i make this
         {{
             requirements(Category.crafting, with(PermaItems.gallium, 3));
@@ -215,7 +233,7 @@ public class PermaBlocks {
             size = 2;
             consumeItem(PermaItems.gallium, 2);
             craftTime = 60f;
-
+            description = greem.emoji();
         }};
 
         bismuthCristilizer = new GenericCrafter("bismuth-crystalizer") {{
