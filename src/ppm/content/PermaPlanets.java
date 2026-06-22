@@ -47,6 +47,7 @@ public class PermaPlanets {
                 prebuildBase = true;
                 enemyBuildSpeedMultiplier = 1;
                 defaultCore = PermaBlocks.coreStasis;
+                
 
 
 

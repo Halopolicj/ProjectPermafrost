@@ -15,11 +15,10 @@ public class PermaSectors {
             alwaysUnlocked = true;
             addStartingItems = true;
             captureWave = 10;
-            difficulty = 0;
-            overrideLaunchDefaults = true;
+            difficulty = 1;
             noLighting = true;
             startWaveTimeMultiplier = 3f;
-
+            requireUnlock = false;
 
         }};
     }
