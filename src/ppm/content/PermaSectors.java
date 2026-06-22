@@ -9,7 +9,7 @@ public class PermaSectors {
     public static SectorPreset one ;
 
     public static void load() {
-        one = new SectorPreset("01", Gleo, 15)
+        one = new SectorPreset("one", PermaPlanets.Gleo, 15)
         {{
             alwaysUnlocked = true;
             addStartingItems = true;
