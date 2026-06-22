@@ -1,6 +1,7 @@
 package ppm.content;
 
 import arc.graphics.Color;
+import arc.struct.Seq;
 import arc.util.Time;
 import mindustry.content.Planets;
 import mindustry.game.Rules;
@@ -9,6 +10,9 @@ import mindustry.graphics.g3d.HexSkyMesh;
 import mindustry.graphics.g3d.MultiMesh;
 import mindustry.graphics.g3d.SunMesh;
 import mindustry.type.Planet;
+import mindustry.type.Sector;
+
+import static arc.graphics.Gl.one;
 
 public class PermaPlanets {
     public static Planet Gleo;
@@ -39,7 +43,6 @@ public class PermaPlanets {
                 atmosphereRadIn = 0.02f;
                 atmosphereRadOut = 0.3f;
                 accessible = true;
-                allowLaunchToNumbered = false;
                 allowLaunchSchematics = true;
                 allowLaunchLoadout = false;
                 allowSectorInvasion = false;
@@ -47,9 +50,6 @@ public class PermaPlanets {
                 prebuildBase = true;
                 enemyBuildSpeedMultiplier = 1;
                 defaultCore = PermaBlocks.coreStasis;
-                
-
-
 
                 ruleSetter = r -> {
                     r.waveTeam = PermaTeams.Glarstes;
