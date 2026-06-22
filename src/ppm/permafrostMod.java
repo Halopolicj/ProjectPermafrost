@@ -33,8 +33,8 @@ public class permafrostMod extends Mod{
         PermaLiquids.load();
         PermaItems.load();
         PermaBlocks.load();
+        PermaSectors.load();
         PermaPlanets.load();
-        //PermaSectorPresets.load();
         PermaTech.load();
         PermaTeams.load();
 
