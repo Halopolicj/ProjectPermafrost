@@ -5,10 +5,13 @@ package ppm.content;
 
 //holy fuck why do i need all of this
 import arc.graphics.Color;
+import arc.graphics.g2d.Draw;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
 import mindustry.type.Category;
 
+import mindustry.type.Item;
+import mindustry.type.ItemStack;
 import mindustry.type.LiquidStack;
 import mindustry.world.Block;
 import mindustry.world.blocks.defense.Wall;
@@ -22,8 +25,6 @@ import mindustry.world.meta.*;
 import mindustry.content.UnitTypes;
 import ppm.expand.blocks.defense.RegenWall;
 
-//TODO add back in regen wall type
-//import ppm.expand.blocks.defense.RegenWall;
 
 import static mindustry.type.ItemStack.with;
 
@@ -57,7 +58,7 @@ public class PermaBlocks {
             cadmiumOverflow, cadmiumUnderflow,
 
     // production
-    greenfactory/*why are you green*/, bismuthCristilizer,
+    galliumSolidifier, greenfactory/*why are you green*/, bismuthCristilizer,
 
     // drills
     basicDrill,
@@ -118,8 +119,7 @@ public class PermaBlocks {
             health = 2500;
             requirements(Category.defense, with(PermaItems.zirconium, 24));
         }};
-        //Regen walls
-        //TODO add this shit back
+
         nanoWall = new RegenWall("nano-wall") {{
             requirements(Category.defense, with(PermaItems.cadmium, 100, PermaItems.gallium, 10));
             health = 1000;
@@ -200,6 +200,19 @@ public class PermaBlocks {
         }};
         //Production
 
+        galliumSolidifier = new GenericCrafter("gallium-solidifier")
+        {{
+           requirements(Category.crafting, with(PermaItems.cadmium, 75, Items.lead, 45));
+           size = 2;
+           consumeLiquid(Liquids.gallium, 10f/60f);
+           outputItem = new ItemStack(PermaItems.gallium, 1);
+           hasItems = true;
+           hasLiquids = true;
+           rotate = false;
+           craftTime = 60f;
+           drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawLiquidTile(Liquids.gallium){{drawLiquidLight = true;}});
+           liquidCapacity = 36f;
+        }};
 
         greenfactory = new GenericCrafter("greenfactory") //geniuenly when the hell did i make this
         {{

@@ -1,5 +1,6 @@
 package ppm.content;
 
+import arc.struct.ObjectSet;
 import mindustry.ai.types.*;
 import mindustry.content.*;
 import mindustry.entities.bullet.*;
@@ -20,6 +21,7 @@ public class PermaUnits {
             legCount = 3;
             coreUnitDock = true;
             legSpeed = 1f;
+            legBaseOffset = 1f;
 
             aiController = GroundAI::new;
             constructor = LegsUnit::create;
@@ -28,27 +30,30 @@ public class PermaUnits {
             legLengthScl = 2f;
             legGroupSize = 3;
             legMoveSpace = 1f;
-            legMinLength = .3f;
-            legMaxLength = .6f;
+            legMinLength = 3f;
+            legMaxLength = 6f;
             //legExtension = -2f;
             legStraightness = .8f;
             //legBaseOffset = 2.5f;
             //legPairOffset = 2.5f;
-            rippleScale = .15f;
+            rippleScale = .1f;
             lockLegBase = true;
             legContinuousMove = true;
             legPhysicsLayer = false;
             allowLegStep = false;
+            legGroupSize = 1;
 
             health = 65f;
             armor = 1f;
-            speed = 1f;
+            speed = 5f;
             drag = 1f;
             flying = false;
+            canDrown = false;
             hitSize = 8f;
             physics = false;
             stepShake = 0f;
             rotateSpeed = 8f;
+            //immunities = new ObjectSet<>();
 
             createScorch = false;
             createWreck = false;
