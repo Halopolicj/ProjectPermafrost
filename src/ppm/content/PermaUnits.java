@@ -1,10 +1,13 @@
 package ppm.content;
 
+import arc.graphics.Color;
 import arc.struct.ObjectSet;
 import mindustry.ai.types.*;
 import mindustry.content.*;
 import mindustry.entities.bullet.*;
+import mindustry.entities.pattern.ShootSpread;
 import mindustry.gen.*;
+import mindustry.graphics.Pal;
 import mindustry.type.*;
 
 public class PermaUnits {
@@ -16,49 +19,87 @@ public class PermaUnits {
     public static void load() {
 
         geride = new UnitType("geride") {{
-           //aiController = CommandAI::new ;
-            isEnemy = false;
-            legCount = 3;
+            legCount = 4;
             coreUnitDock = true;
             legSpeed = 1f;
-            legBaseOffset = 1f;
-
-            aiController = GroundAI::new;
+            legBaseOffset = 2f;
+            controller = u -> u.team.isAI() ? new BuilderAI(true, 400f) : new CommandAI();
+            isEnemy = false;
             constructor = LegsUnit::create;
             groundLayer = 60f;
 
             legLengthScl = 2f;
-            legGroupSize = 3;
+            legGroupSize = 2;
             legMoveSpace = 1f;
-            legMinLength = 3f;
-            legMaxLength = 6f;
+            legMinLength = 2f;
+            legMaxLength = 5f;
             //legExtension = -2f;
             legStraightness = .8f;
             //legBaseOffset = 2.5f;
-            //legPairOffset = 2.5f;
+            legPairOffset = 2.5f;
             rippleScale = .1f;
             lockLegBase = true;
             legContinuousMove = true;
             legPhysicsLayer = false;
             allowLegStep = false;
-            legGroupSize = 1;
-
             health = 65f;
             armor = 1f;
             speed = 5f;
             drag = 1f;
             flying = false;
             canDrown = false;
+            legForwardScl = 5f;
             hitSize = 8f;
             physics = false;
             stepShake = 0f;
             rotateSpeed = 8f;
-            //immunities = new ObjectSet<>();
-
+            immunities.add(StatusEffects.wet);
             createScorch = false;
             createWreck = false;
+            mineSpeed = 8f;
+            mineTier = 1;
+            buildSpeed = 1f;
+            itemCapacity = 70;
 
-            canAttack = true;
+
+            weapons.add(new Weapon("heal-turret"){{
+                top = false;
+                reload = 60f;
+                x = 0f;
+                y = 4f;
+
+                shoot = new ShootSpread(){{
+                    shots = 2;
+                    shotDelay = 3f;
+                    spread = 2f;
+                }};
+
+                inaccuracy = 3f;
+                shootSound = Sounds.shootBeamPlasmaSmall;
+
+                bullet = new LaserBoltBulletType(3.5f, 11){{
+                    scaleKeepVelocity = true;
+                    collidesTeam = true;
+                    healPercent = 5.5f;
+                    width = 1.5f;
+                    height = 5f;
+                    hitEffect = despawnEffect = Fx.hitBulletColor;
+                    trailWidth = 1.2f;
+                    trailLength = 4;
+                    shootEffect = Fx.shootSmallColor;
+                    smokeEffect = Fx.hitLaserColor;
+                    backColor = trailColor = Pal.heal;
+                    hitColor = Pal.heal;
+                    frontColor = Color.white;
+                    lightColor = Pal.heal;
+
+                    lifetime = 70f;
+                    buildingDamageMultiplier = 0.01f;
+                    homingPower = 0.5f;
+                    homingDelay = 2f;
+                }};
+            }});
+        }};
 
         }};
         /*colonist = new UnitType("colonist") {{
@@ -412,5 +453,5 @@ public class PermaUnits {
 
             canAttack = true;
             weapons.add(AeyamaWeapons.insectSpit);*/
-        };
-}
+        //};
+//}

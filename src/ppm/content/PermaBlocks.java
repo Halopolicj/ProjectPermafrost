@@ -278,9 +278,9 @@ public class PermaBlocks {
             itemCapacity = 2000;
             health = 2000;
             unitCapModifier = 15;
-            unitType = UnitTypes.poly;
+            unitType = PermaUnits.geride;
             drawTeamOverlay = true;
-            requirements(Category.effect, with(PermaItems.cadmium, 2000, Items.lead, 2000));
+            requirements(Category.effect, with(PermaItems.cadmium, 1500, Items.lead, 1500));
         }};
 
         coreFairness = new CoreBlock("core-fairness") {{

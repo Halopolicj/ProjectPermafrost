@@ -50,6 +50,20 @@ public class TechTemperate {
                });
             });
 
+            //drills
+            node(basicDrill, () -> {
+
+            });
+
+            //crafting
+            node(galliumSolidifier, () -> {
+                node(bismuthCristilizer, () -> {
+
+                });
+            });
+
+
+            //resources
             nodeProduce(cadmium, () -> {
 
                 nodeProduce(Items.silicon, () -> {
@@ -57,11 +71,18 @@ public class TechTemperate {
                 });
 
                nodeProduce(Items.lead, () -> {
+                   nodeProduce(Liquids.gallium, () -> {
+
+                   });
+               });
+               nodeProduce(Liquids.water, () -> {
 
                });
 
             });
 
+
+            //sectors
             node(one, () -> {
 
             });
