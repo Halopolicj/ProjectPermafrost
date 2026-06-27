@@ -84,7 +84,7 @@ public class TechTemperate {
 
 
             //sectors
-            node(one, () -> {
+            node(crossingIslands, () -> {
 
             });
         });

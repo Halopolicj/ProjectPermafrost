@@ -7,10 +7,10 @@ import mindustry.type.SectorPreset;
 import static ppm.content.PermaPlanets.Gleo;
 
 public class PermaSectors {
-    public static SectorPreset one ;
+    public static SectorPreset one, crossingIslands;
 
     public static void load() {
-        one = new SectorPreset("one", PermaPlanets.Gleo , 15)
+        one = new SectorPreset("one", PermaPlanets.Gleo , 21)
         {{
             alwaysUnlocked = true;
             addStartingItems = true;
@@ -19,6 +19,12 @@ public class PermaSectors {
             noLighting = true;
             startWaveTimeMultiplier = 3f;
             requireUnlock = false;
+
+        }};
+
+        crossingIslands = new SectorPreset("crossing-IslandsV1", Gleo, 15){{
+           alwaysUnlocked = true;
+           requireUnlock = false;
 
         }};
     }
