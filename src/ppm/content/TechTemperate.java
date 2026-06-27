@@ -65,19 +65,20 @@ public class TechTemperate {
 
             //resources
             nodeProduce(cadmium, () -> {
-
                 nodeProduce(Items.silicon, () -> {
 
                 });
+                nodeProduce(Items.lead, () -> {
+                    nodeProduce(Liquids.gallium, () -> {
 
-               nodeProduce(Items.lead, () -> {
-                   nodeProduce(Liquids.gallium, () -> {
+                    });
+                    nodeProduce(neodymium, () -> {
 
-                   });
-               });
-               nodeProduce(Liquids.water, () -> {
+                    });
+                });
+                nodeProduce(Liquids.water, () -> {
 
-               });
+                });
 
             });
 

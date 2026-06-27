@@ -7,6 +7,7 @@ public class PermaAttributes {
     public static void load() {
         Attribute.add("Cadmium");
         Attribute.add("Gallium");
+        Attribute.add("Neodymium");
 
     }
 }

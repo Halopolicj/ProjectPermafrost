@@ -8,11 +8,11 @@ public class PermaItems {
     //Load Mod Items
 
     public static Item
-            cadmium, gallium, zirconium, bismuth;
+            cadmium, gallium, neodymium, zirconium, bismuth;
 
     public static void load() {
         cadmium = new Item("cadmium") {{
-            cost = 0.4f;
+            cost = 1f;
             color = Color.valueOf("cbbd8a");
             hardness=1;
         }};
@@ -22,14 +22,18 @@ public class PermaItems {
             hardness = 3;
         }};
         bismuth = new Item("bismuth") {{
-            cost = 1f;
+            cost = 2f;
             hardness = 2;
             charge = 1f;
             //how the hell do i make the color rainbow
             color = Color.coral;//I got no idea how the coral color looks
         }};
+        neodymium = new Item("neodymium") {{
+            cost = 2.65f;
+            color = Color.valueOf("c26cbc");
+        }};
         zirconium = new Item("zirconium") {{
-            cost =  1.4f;
+            cost =  3f;
             charge = 0.7f;
             //TODO add cool color probably blue-ish
         }};
