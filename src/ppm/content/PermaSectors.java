@@ -23,13 +23,9 @@ public class PermaSectors {
         }};
 
         crossingIslands = new SectorPreset("crossing-IslandsV1", Gleo, 15){{
-            alwaysUnlocked = true;
-            addStartingItems = true;
-            captureWave = 10;
-            difficulty = 1;
-            noLighting = true;
-            startWaveTimeMultiplier = 3f;
-            requireUnlock = false;
+           alwaysUnlocked = true;
+           requireUnlock = false;
+
         }};
     }
 }

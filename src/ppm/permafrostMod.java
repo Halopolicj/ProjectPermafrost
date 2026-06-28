@@ -29,7 +29,7 @@ public class permafrostMod extends Mod{
         //MindyPlanets.load();
         //MindySectors.load();
         //MindyTechTree.load();
-        PermaAttributes.load();
+        //PermaAttributes.load();
         PermaLiquids.load();
         PermaItems.load();
         PermaUnits.load();

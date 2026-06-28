@@ -73,7 +73,7 @@ public class PermaPlanets {
 
 
                 startSector = 15;
-                sectors = new Seq<>();
+
             }
         };
     }
