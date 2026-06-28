@@ -11,7 +11,7 @@ import mindustry.graphics.g3d.MultiMesh;
 import mindustry.graphics.g3d.SunMesh;
 import mindustry.type.Planet;
 import mindustry.type.Sector;
-
+import ppm.content.PermaSectors.*;
 import static arc.graphics.Gl.one;
 
 public class PermaPlanets {
@@ -50,6 +50,7 @@ public class PermaPlanets {
                 prebuildBase = true;
                 enemyBuildSpeedMultiplier = 1;
                 defaultCore = PermaBlocks.coreStasis;
+                visible = true;
 
                 ruleSetter = r -> {
                     r.waveTeam = PermaTeams.Glarstes;
@@ -72,6 +73,7 @@ public class PermaPlanets {
 
 
                 startSector = 15;
+                sectors = new Seq<>();
             }
         };
     }

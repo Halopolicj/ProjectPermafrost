@@ -74,7 +74,6 @@ public class PermaBlocks {
             variants = 3;
             oreScale = 2f;
             oreThreshold = 0.5f;
-            attributes.set(Attribute.get("Cadmium"), .075f);
         }};
         //wall ores
         wallGallium = new OreBlock("wall-gallium-ore") {{
@@ -103,6 +102,7 @@ public class PermaBlocks {
         cadmiumWall = new Wall("cadmium-wall") {{
             health = 200;
             requirements(Category.defense, with(PermaItems.cadmium, 6));
+
         }};
         cadmiumWallBig = new Wall("cadmium-wall-big") {{
             health = 1000;

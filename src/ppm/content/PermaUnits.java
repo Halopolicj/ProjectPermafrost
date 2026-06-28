@@ -25,30 +25,32 @@ public class PermaUnits {
             legBaseOffset = 2f;
             controller = u -> u.team.isAI() ? new BuilderAI(true, 400f) : new CommandAI();
             isEnemy = false;
-            constructor = LegsUnit::create;
+            constructor = UnitWaterMove::create;
             groundLayer = 60f;
-
+            shadowElevation = 0.12f;
             legLengthScl = 2f;
             legGroupSize = 2;
             legMoveSpace = 1f;
             legMinLength = 2f;
-            legMaxLength = 5f;
+            legMaxLength = 4f;
             //legExtension = -2f;
-            legStraightness = .8f;
+            legStraightness = .6f;
             //legBaseOffset = 2.5f;
             legPairOffset = 2.5f;
-            rippleScale = .1f;
+            rippleScale = 0f;
             lockLegBase = true;
             legContinuousMove = true;
-            legPhysicsLayer = false;
+            legPhysicsLayer = true;
             allowLegStep = false;
+            legForwardScl = 2.5f;
+
             health = 65f;
             armor = 1f;
-            speed = 5f;
+            speed = 4.5f;
             drag = 1f;
             flying = false;
             canDrown = false;
-            legForwardScl = 5f;
+
             hitSize = 8f;
             physics = false;
             stepShake = 0f;
@@ -56,10 +58,12 @@ public class PermaUnits {
             immunities.add(StatusEffects.wet);
             createScorch = false;
             createWreck = false;
+
             mineSpeed = 8f;
             mineTier = 1;
             buildSpeed = 1f;
             itemCapacity = 70;
+
 
 
             weapons.add(new Weapon("heal-turret"){{
@@ -94,7 +98,6 @@ public class PermaUnits {
                     lightColor = Pal.heal;
 
                     lifetime = 70f;
-                    buildingDamageMultiplier = 0.01f;
                     homingPower = 0.5f;
                     homingDelay = 2f;
                 }};
