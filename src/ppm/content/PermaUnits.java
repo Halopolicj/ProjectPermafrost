@@ -37,7 +37,6 @@ public class PermaUnits {
             legStraightness = .6f;
             //legBaseOffset = 2.5f;
             legPairOffset = 2.5f;
-            rippleScale = 0.01f;
             lockLegBase = true;
             legContinuousMove = true;
             legPhysicsLayer = true;
