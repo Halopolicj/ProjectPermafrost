@@ -5,10 +5,13 @@ import arc.struct.ObjectSet;
 import mindustry.ai.types.*;
 import mindustry.content.*;
 import mindustry.entities.bullet.*;
+import mindustry.entities.effect.SoundEffect;
 import mindustry.entities.pattern.ShootSpread;
 import mindustry.gen.*;
 import mindustry.graphics.Pal;
 import mindustry.type.*;
+
+import static mindustry.gen.Sounds.none;
 
 public class PermaUnits {
     public static UnitType
@@ -19,30 +22,35 @@ public class PermaUnits {
     public static void load() {
 
         geride = new UnitType("geride") {{
-            legCount = 4;
+
             coreUnitDock = true;
-            legSpeed = 1f;
+            rotateMoveFirst = true;
             legBaseOffset = 2f;
             controller = u -> u.team.isAI() ? new BuilderAI(true, 400f) : new CommandAI();
             isEnemy = false;
-            constructor = UnitWaterMove::create;
-            groundLayer = 60f;
+
+            legSpeed = 1f;
+            legCount = 4;
+            constructor = LegsUnit::create;
             shadowElevation = 0.12f;
-            legLengthScl = 2f;
+            emitWalkSound = false;
+            moveSound = none;
+            legLengthScl = 0.8f;
             legGroupSize = 2;
-            legMoveSpace = 1f;
+            legMoveSpace = 2f;
             legMinLength = 2f;
-            legMaxLength = 4f;
-            //legExtension = -2f;
+            legMaxLength = 3f;
+            legExtension = 1f;
             legStraightness = .6f;
-            //legBaseOffset = 2.5f;
-            legPairOffset = 2.5f;
+            legBaseOffset = 2.5f;
+            legPairOffset = 1f;
             rippleScale = 0f;
             lockLegBase = true;
             legContinuousMove = true;
-            legPhysicsLayer = true;
-            allowLegStep = false;
-            legForwardScl = 2.5f;
+            legPhysicsLayer = false;
+            allowLegStep = true;
+            legForwardScl = 0.5f;
+            hovering = true;
 
             health = 65f;
             armor = 1f;
@@ -54,7 +62,7 @@ public class PermaUnits {
             hitSize = 8f;
             physics = false;
             stepShake = 0f;
-            rotateSpeed = 8f;
+            rotateSpeed = 4f;
             immunities.add(StatusEffects.wet);
             createScorch = false;
             createWreck = false;
@@ -74,8 +82,8 @@ public class PermaUnits {
 
                 shoot = new ShootSpread(){{
                     shots = 2;
-                    shotDelay = 3f;
-                    spread = 2f;
+                    shotDelay = 15f;
+                    spread = 10f;
                 }};
 
                 inaccuracy = 3f;
@@ -84,7 +92,8 @@ public class PermaUnits {
                 bullet = new LaserBoltBulletType(3.5f, 11){{
                     scaleKeepVelocity = true;
                     collidesTeam = true;
-                    healPercent = 5.5f;
+                    healPercent = 1f;
+                    damage = 0;
                     width = 1.5f;
                     height = 5f;
                     hitEffect = despawnEffect = Fx.hitBulletColor;
@@ -98,7 +107,8 @@ public class PermaUnits {
                     lightColor = Pal.heal;
 
                     lifetime = 70f;
-                    homingPower = 0.5f;
+                    homingPower = 0.3f;
+                    homingRange = 5f;
                     homingDelay = 2f;
                 }};
             }});

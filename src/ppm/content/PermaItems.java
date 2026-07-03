@@ -2,6 +2,7 @@ package ppm.content;
 
 import arc.graphics.Color;
 import mindustry.type.Item;
+import ppm.content.PermaPallette.*;
 
 public class PermaItems {
 
@@ -18,7 +19,7 @@ public class PermaItems {
         }};
         gallium = new Item("gallium") {{
             cost = 1.8f;
-            color = Color.gray;
+            color = PermaPallette.galliumCyan;
             hardness = 3;
         }};
         bismuth = new Item("bismuth") {{
@@ -30,7 +31,7 @@ public class PermaItems {
         }};
         neodymium = new Item("neodymium") {{
             cost = 2.65f;
-            color = Color.valueOf("c26cbc");
+            color = PermaPallette.neodymiumPink;
         }};
         zirconium = new Item("zirconium") {{
             cost =  3f;

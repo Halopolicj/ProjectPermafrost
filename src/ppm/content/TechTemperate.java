@@ -9,6 +9,7 @@ import static mindustry.content.TechTree.*;
 import static ppm.content.PermaItems.*;
 import static ppm.content.PermaBlocks.*;
 import static ppm.content.PermaSectors.*;
+import static ppm.content.PermaTurrets.*;
 
 public class TechTemperate {
 
@@ -39,16 +40,6 @@ public class TechTemperate {
 
                 });
             });
-            node(cadmiumWall, () -> {
-               node(cadmiumWallBig, () -> {
-
-               });
-               node(zircWall, () -> {
-                   node(zircWallBig, () -> {
-
-                   });
-               });
-            });
 
             //drills
             node(basicDrill, () -> {
@@ -62,6 +53,22 @@ public class TechTemperate {
                 });
             });
 
+            //walls
+            node(cadmiumWall, () -> {
+                node(cadmiumWallBig, () -> {
+
+                });
+                node(zircWall, () -> {
+                    node(zircWallBig, () -> {
+
+                    });
+                });
+            });
+
+            //turrets
+            node(hedgehog, () -> {
+
+            });
 
             //resources
             nodeProduce(cadmium, () -> {

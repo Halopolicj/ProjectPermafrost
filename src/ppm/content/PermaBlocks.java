@@ -6,6 +6,7 @@ package ppm.content;
 //holy fuck why do i need all of this
 import arc.graphics.Color;
 import arc.graphics.g2d.Draw;
+import arc.graphics.g2d.TextureRegion;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
 import mindustry.type.Category;
@@ -26,6 +27,7 @@ import mindustry.content.UnitTypes;
 import ppm.expand.blocks.defense.RegenWall;
 
 
+import static arc.Core.assets;
 import static mindustry.type.ItemStack.with;
 
 
@@ -210,8 +212,12 @@ public class PermaBlocks {
            hasLiquids = true;
            rotate = false;
            craftTime = 60f;
-           drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawLiquidTile(Liquids.gallium){{drawLiquidLight = true;}});
-           liquidCapacity = 36f;
+           drawer = new DrawMulti(
+                    new DrawRegion("-bottom"),
+                    new DrawLiquidOutputs(),
+                    new DrawDefault()
+            );
+            liquidCapacity = 36f;
         }};
 
         greenfactory = new GenericCrafter("greenfactory") //geniuenly when the hell did i make this
