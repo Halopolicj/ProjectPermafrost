@@ -6,42 +6,33 @@ import arc.util.Time;
 import mindustry.content.Planets;
 import mindustry.game.Rules;
 import mindustry.game.Team;
+import mindustry.graphics.g3d.HexMesh;
 import mindustry.graphics.g3d.HexSkyMesh;
 import mindustry.graphics.g3d.MultiMesh;
 import mindustry.graphics.g3d.SunMesh;
+import mindustry.maps.generators.BlankPlanetGenerator;
 import mindustry.type.Planet;
 import mindustry.type.Sector;
 import ppm.content.PermaSectors.*;
 import static arc.graphics.Gl.one;
-
+import ppm.planets.PermaPlanetGenerator;
 public class PermaPlanets {
     public static Planet Gleo;
 
     public static void load() {
         Gleo = new Planet("Gleo", Planets.sun, 1, 2) {
             {
-                //p sure most of this is stolen
-                meshLoader = () -> new SunMesh(
-                        this, 4,
-                        5, 0.3, 1.7, 1.2, 1,
-                        1.1f,
-                        Color.valueOf("3587F2"),
-                        Color.valueOf("00FF9F"),
-                        Color.valueOf("C165F7"),
-                        Color.valueOf("6F3C8D"),
-                        Color.valueOf("BE47E5"),
-                        Color.valueOf("6E2B84")
-                );
+                generator = new PermaPlanetGenerator();
+                meshLoader = () -> new HexMesh(this, 5);
                 cloudMeshLoader = () -> new MultiMesh(
                         new HexSkyMesh(this, 2, 0.15f, 0.14f, 5, Color.valueOf("3587F2").a(0.75f), 2, 0.42f, 1f, 0.43f),
                         new HexSkyMesh(this, 3, 0.6f, 0.15f, 5, Color.valueOf("00FF9F").a(0.75f), 2, 0.42f, 1.2f, 0.45f)
                 );
-                landCloudColor = Color.valueOf("3587F2");
-                atmosphereColor = Color.valueOf("00FF9F");
+                landCloudColor = Color.valueOf("1365d0");
+                hasAtmosphere = false;
                 alwaysUnlocked = true;
                 tidalLock = true;
-                atmosphereRadIn = 0.02f;
-                atmosphereRadOut = 0.3f;
+
                 accessible = true;
                 allowLaunchSchematics = true;
                 allowLaunchLoadout = false;
@@ -55,13 +46,10 @@ public class PermaPlanets {
                 ruleSetter = r -> {
                     r.waveTeam = PermaTeams.Glarstes;
                     r.placeRangeCheck = false;
-                    r.showSpawns = true;
                     r.waveSpacing = 80 * Time.toSeconds;
                     r.initialWaveSpacing = 8f * Time.toMinutes;
                     r.coreDestroyClear = true;
                     r.dropZoneRadius = 64;
-
-
                     r.waves = true;
                     r.onlyDepositCore = true;
                     r.fog = false;
@@ -71,10 +59,11 @@ public class PermaPlanets {
                     teamRule.rtsAi = true;
                 };
 
-
+                unlockedOnLand.add(PermaBlocks.coreStasis);
                 startSector = 15;
 
             }
+
         };
     }
 }
